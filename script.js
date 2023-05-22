@@ -11,8 +11,12 @@
     Promedio edades de usuarios.
     
 */
+
+
+
 alert("Bienvenido a tus JuegosProtatiles! ")
 //funcion para validar la edad ingresada.
+let mensaje = "Ingresa tu edad";
 function validarNumero(numero, mensaje){
     while(isNaN(numero)){
         alert("Ingresaste un valor no acptado. Vuelve a intentar.")
@@ -20,9 +24,10 @@ function validarNumero(numero, mensaje){
     } 
     return numero;
 }
+
 //Funcion para dar inicio o registrar usuario.
 function usuarioRegistrado(parametro){
-    if ((parametro == si) || (parametro == sí)){
+    if ((parametro == "si") || (parametro == "sí")){
         iniciar()
     }else{
         registrarse()
@@ -38,10 +43,15 @@ function registrarse() {
 
 }
 
-function programa (usuario){
-    while(seguir ==0){
+function programa (num){
+    let seguir = true;
+
+    while(seguir){
         alert("eleji cualquiera de las siguientes opciones:\n 1.iniciar juego \n 2.salier del juego. \n 3.calificar juego. \n 4. salier del usuario.")
         //opciones dentro del programa.
+
+        num = parseInt(prompt("Ingresa el número de la opción elegida:"));
+
         switch(num){
             case 1:
                 alert("Iniciaste el juego.");
@@ -53,7 +63,7 @@ function programa (usuario){
                 usuario.calificar();
             break;
             case 4:
-                seguir = 1;
+                seguir = false;
             break;
             default: 
                 alert("Tenes que eleguir un numero del 1 al 4.");
@@ -74,8 +84,9 @@ function promedioEdad (){
     console.log(`La edad promedio es de ${promedio} `)
 }
 let inicio = prompt("Tenes un usuario iniciado? (si/no)").toLocaleLowerCase()
+inicio = usuarioRegistrado(inicio);
 
-iniciar();
+programa(iniciar());
 
 //constrctor de Usuario
 class Usuario {
@@ -112,7 +123,7 @@ function iniciar (){
 //Eliminar todos los usuarios que ya existen.
 function eliminarTodosLosUsuarios (){
     let eliminar = prompt("desea eliminar el usuario elegido ? (si/no)").toLocaleLowerCase()
-    if((eliminar==si) || (eliminar==sí)){
+    if((eliminar=="si") || (eliminar=="sí")){
         while(USUARIOS.length != 0)
         USUARIOS.pop();
     }
