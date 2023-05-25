@@ -5,10 +5,9 @@
     Elegir usuario:
         -Poder jugar.
         -Salir del juego.
-        -Calificar juegos.
-    Eliminar todos los usuario. 
+        -Guardar juegos.
     Salir del usuario.
-    Promedio edades de usuarios.
+    
     
 */
 
@@ -16,6 +15,7 @@
 
 alert("Bienvenido a tus JuegosProtatiles! ")
 //funcion para validar la edad ingresada.
+
 let mensaje = "Ingresa tu edad";
 function validarNumero(numero, mensaje){
     while(isNaN(numero)){
@@ -25,14 +25,34 @@ function validarNumero(numero, mensaje){
     return numero;
 }
 
+function iniciar(){
+    //Muestro a todos los Usuarios ya registrados.
+    let mensaje = "Estos son los usuarios registrados, ingrese el ID que corresponda.  \n"
+    USUARIOS.forEach(element => {
+        mensaje += `${element.id} - ${element.nombre} \n`
+    });
+    //Analizamos la respuesta.
+    let respuesta = parseInt(prompt( `elegi un usuario` ));
+    respuesta = validarNumero(respuesta, mensaje);
+
+    let usuarioElegido= USUARIOS.find(element => element.id === respuesta);
+
+    programa(usuarioElegido);
+};
+
 //Funcion para dar inicio o registrar usuario.
 function usuarioRegistrado(parametro){
     if ((parametro == "si") || (parametro == "sí")){
-        iniciar()
+        iniciar();
+    }else if(parametro =="no"){
+        registrarse();
     }else{
-        registrarse()
+        primeraRespuesta = prompt("Tenes un usuario iniciado? (si/no)").toLocaleLowerCase();
+        usuarioRegistrado(primeraRespuesta)
     }
-}
+};
+
+
 //funcion para registrar un nuevo usuario.
 function registrarse() {
     let nombreUsuario = prompt("Como es tu nombre? ")
@@ -40,38 +60,52 @@ function registrarse() {
     edadUsuario = validarNumero(edadUsuario, mensaje); 
     let num = USUARIOS.length + 1;
     USUARIOS.push(num ,nombreUsuario, edadUsuario);
-
+    alert("usuario registrado.")
+    programa();
 }
 
-function programa (num){
+function programa (participante){
     let seguir = true;
 
     while(seguir){
-        alert("eleji cualquiera de las siguientes opciones:\n 1.iniciar juego \n 2.salier del juego. \n 3.calificar juego. \n 4. salier del usuario.")
         //opciones dentro del programa.
 
-        num = parseInt(prompt("Ingresa el número de la opción elegida:"));
+        let num = parseInt(prompt("eleji cualquiera de las siguientes opciones:\n 1.iniciar juego \n 2. salier del usuario. \n 3.Guardar juego. \n "));
 
         switch(num){
             case 1:
                 alert("Iniciaste el juego.");
+                juego();
             break;
             case 2:
                 alert("Saliste del juego.");
-            break;
-            case 3:
-                usuario.calificar();
-            break;
-            case 4:
                 seguir = false;
             break;
+            case 3:
+                participante.guardado = new Date();
+            break;
             default: 
-                alert("Tenes que eleguir un numero del 1 al 4.");
+                alert("Tenes que eleguir un numero del 1 al 3.");
             break;
         }
     }
+    promedioEdad();
 }
+function juego(){
+    let numeroUser = parseInt(prompt("Decime un numero del 1 al 100"));
 
+    let numeroPC = Math.random() * 100; 
+
+    numeroPC = Math.ceil(numeroPC); //Math.round
+
+    if (numeroUser > numeroPC){
+        alert(`Ganaste con ${numeroUser} a mi ${numeroPC} `)        
+    }else if (numeroUser == numeroPC){
+            alert("Encontraste el empate!!")
+    }else{
+            alert(`No le pudiste ganar al ${numeroPC} de la PC`)
+    };
+}
 //Sacamos la edad promedio de los usuarios.
 function promedioEdad (){
     let acumulador = 0;
@@ -83,10 +117,6 @@ function promedioEdad (){
     let promedio = (acumulador/USUARIOS.length);
     console.log(`La edad promedio es de ${promedio} `)
 }
-let inicio = prompt("Tenes un usuario iniciado? (si/no)").toLocaleLowerCase()
-inicio = usuarioRegistrado(inicio);
-
-programa(iniciar());
 
 //constrctor de Usuario
 class Usuario {
@@ -94,7 +124,7 @@ class Usuario {
         this.id =id,
         this.nombre =nombre,
         this.edad =edad,
-        this.calificar = ""
+        this.guardado = "";
     }
 }
 
@@ -106,85 +136,7 @@ const usuario5 = new Usuario (5, "Nestor Neres", 10);
 
 const USUARIOS = [usuario1, usuario2, usuario3, usuario4, usuario5];
 
+let primeraRespuesta = prompt("Tenes un usuario iniciado? (si/no)").toLocaleLowerCase();
 
-function iniciar (){
-    //Muestro a todos los Usuarios ya registrados.
-    let mensaje = "Estos son los usuarios registrados, ingrese el IDque corresponda.  \n"
-    USUARIOS.forEach(element => {
-        mensaje += `${element.id} - ${element.nombre} \n`
-    });
-    //Analizamos la respuesta.
-    let respuesta = parseInt(prompt("Cual es tu usuario?"));
-    respuesta = validarNumero(respuesta, mensaje);
-
-    return USUARIOS.find(element => element.id === respuesta);
-}
-
-//Eliminar todos los usuarios que ya existen.
-function eliminarTodosLosUsuarios (){
-    let eliminar = prompt("desea eliminar el usuario elegido ? (si/no)").toLocaleLowerCase()
-    if((eliminar=="si") || (eliminar=="sí")){
-        while(USUARIOS.length != 0)
-        USUARIOS.pop();
-    }
-}
-
-//funcion para registrar un nuevo usuario.
-/*function registrarse (nombre, edad){
-    let nombre = prompt("Coloca tu nombre: ")
-
-    let edad = parseInt(prompt("Coloca te edad: "))
-    edad = validarNumero(edad)
-    return nombre, edad;
-}
-//funcion para validar edad del usuario.
-function validarNumero(numero){
-    while(isNaN(numero)){
-        alert("Ingresaste un valor no numerico, reintentalo")
-        numero = parseInt(prompt("Coloca un numero: "));
-    } 
-    return numero;
-}
-*/
-
-/*
-let edadUsuario =parseInt (prompt("La edad es invalidad, por favor colocar una edad mayor a 6 años y menor o igual a 10 años o coloque 99 para salir. "));
-
-let nombreUsuario = prompt("Coloca tu nombre: ")
-
-let edadTotal= 0;
-let totalInscriptos = 0;
-
-//Funcion que da el promedio de edades.
-const edadPromedio = (edades, participan) => {return (edades / participan).toFixed(2) }
-
-//Funcion para confirmar si la edad esta dentro de lo establecido.
-function edadCorrecta (años){
-    if((años >= 6) && (años <=10)){
-        edadTotal += edadUsuario;
-        totalInscriptos++;
-
-    }else{
-        alert(`La edad es invalidad, por favor colocar una edad mayor a 6 años y menor o igual a 10 años o coloque 99 para salir.`)
-    }
-}
-
-//Ciclo while para dejar que los usuarios tengan la posibilidad de repetir varias veces el proceso.
-while(edadUsuario!= 99){
-    edadCorrecta(edadUsuario);
-    edadUsuario = parseInt(prompt("Coloca tu edad para registrarte. La misma debe ser mayor a 6 años. Si desae salir coloque 99"));
-    
-    nombreUsuario = prompt("Coloca tu nombre: ")
-    
-}
-
-
-if(totalInscriptos != 0){
-    alert(`Se anotaron ${totalInscriptos} personas con una edad promedio de ${edadPromedio(edadTotal, totalInscriptos)}.`)
-}else{
-    alert(`No se registraron participantes`)
-}
-*/
-
-
+usuarioRegistrado(primeraRespuesta);
 
