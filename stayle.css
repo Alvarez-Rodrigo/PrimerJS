@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color:ghostwhite ;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+#inicio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 15px;
+    width: 300px;
+}
+button{
+    padding: 15px;
+    margin: 15px;
+    width: 150px;
+}
+.box p{
+    font-size: 15px;
+
+}
+
+#usuario{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
