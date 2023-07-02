@@ -1,0 +1,27 @@
+[
+    {
+      "id": 0,
+      "nombre": "Batman",
+      "imagen": "batman.jpg"
+    },
+    {
+      "id": 1,
+      "nombre": "Superman",
+      "imagen": "superman.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "Pokemon",
+      "imagen": "pokemon.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "Monster House",
+      "imagen": "monsterhouse.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Charlie y la fábrica de chocolate",
+      "imagen": "charlie.jpg"
+    }
+  ]
