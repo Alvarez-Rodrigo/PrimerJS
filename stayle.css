@@ -45,3 +45,18 @@ img{
     width: 250px;
     height: 150px;
 }
+.botonWeb, .verCarrito {
+    margin: 20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+  
+  #formulario{
+    display: none;
+    margin: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }

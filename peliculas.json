@@ -2,26 +2,41 @@
     {
       "id": 0,
       "nombre": "Batman",
+      "precio": 100,
+      "disponibles" : 10,
+      "cantidad" :1,
       "imagen": "batman.jpg"
     },
     {
       "id": 1,
       "nombre": "Superman",
+      "precio": 140,
+      "disponibles" : 40,
+      "cantidad" :1,
       "imagen": "superman.jpg"
     },
     {
       "id": 2,
       "nombre": "Pokemon",
+      "precio": 100,
+      "disponibles" : 5,
+      "cantidad" :1,
       "imagen": "pokemon.jpg"
     },
     {
       "id": 3,
       "nombre": "Monster House",
+      "precio": 50,
+      "disponibles" : 15,
+      "cantidad" :1,
       "imagen": "monsterhouse.jpg"
     },
     {
       "id": 4,
       "nombre": "Charlie y la fábrica de chocolate",
+      "precio": 90,
+      "disponibles" : 100,
+      "cantidad" :1,
       "imagen": "charlie.jpg"
     }
   ]

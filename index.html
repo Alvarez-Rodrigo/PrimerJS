@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Boostrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!--Scrips-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--CSS-->
     <link rel="stylesheet" href="./stayle.css">
+
     <title>Proyecto final</title>
 
 </head>
 <body>
     <h1>Bienvenido a mi cine</h1>
+    
+
+    <div class="botonWeb">
+        <input type="button" value="¡Registrate en nuestra Web!" class="btn btn-primary" id="botonWeb">
+    </div>
+    <div>
+    <form id="formulario"> 
+        <input type="text" class="input" id="nombreUser" placeholder="Ingrese su nombre">
+        <input type="email" class="input" id="mailUser" placeholder="Ingrese su mail"> 
+        <input type="button" class="input" id="btnSubmit" value="Enviar" id="btnSubmit">
+    </form>
+    </div>
     <div class="espacio" id="inicio"></div>
     <div id="cartelera"></div>
-    <input type="button" id="verCartelera" value="Ver Cartelera" onclick="verCartelera()">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./class.js"></script>
+    <div id="carritoCompra"></div>
+    <div id="finalizaCompra"></div>
+
+
 
     <script src="./script.js"></script>
 </body>
